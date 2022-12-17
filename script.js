@@ -1,67 +1,39 @@
-// $(() => {
-//   const titleH1 = () => {
-//     $h1 = $('<h1>').text("Just getting started")
-//     $('.body').prepend($h2)
-//   }
-// Global variable:
-const map = $("#map");
-let click_limit = 15; // we need to click_limit
-const width = 400;
-const height = 400;
+const mapWidthX = 400;
+const mapWidthY = 400;
+let click_limit = 15;
 
-const getRandomNumber = (size) => {
-  // to locate the treasure
-  // console.log("haha");
-  return Math.floor(Math.random() * size);
-};
-
-const getDistance = function (event, treasureLocation) {
-  const diffX = event.offsetX - treasureLocation.x;
-  const diffY = event.offsetY - treasureLocation.y;
-  return Math.sqrt(diffX * diffX + diffY * diffY);
-};
-
-/* $("button").click_limit(function()){
-    var x = $("p").offset();
-    alert("Top: " + x.top + x.left);
-  }*/
-let treasureLocation = {
-  x: getRandomNumber(width),
-  y: getRandomNumber(height),
-};
-function startGame() {
-  console.log("hahaha");
-  // reduce click
-  // calculate distance'
-  // get hint
-  // condition to endGame
-  //1. if player distance is within 8 of less, win game
-  //2. no click left and distance greater than 8, lose game
-}
-
-// A $( document ).ready() block.
 $(document).ready(function () {
   // console.log("ready!");
+  // 1a. get random axis to locate treasure
+  const pickRandomNum = function (inputSize) {
+    return Math.floor(Math.random() * inputSize);
+  };
+  // 1b. locate the treasure
+  const treasureLocation = {
+    x: pickRandomNum(mapWidthX),
+    y: pickRandomNum(mapWidthY),
+  };
+  // 2. load click counter (decreasing)
+
+  // 3. click map
+  // 4. calcultae distance between location A and treasure
+  // 5. get Hint
+  // 6. condition to win / lose game
+  // 7. alert fn (declare win/lose)
+  // 8. restart game
   map.on("click", startGame);
 });
 
-const endGame = () => {
-  if (click_limit === 0) {
-    console.log("No click left", click);
-    alert("No clicks left!");
-    // once alert "okay" button is click, retart the game!
-  }
+const startGame = function () {
+  // 3. start clicking
+  click_limit--;
+  // get distance between mouse location and treassure location
+  const getDistance = function (event, treasureLocation) {
+    const diffdistanceX = event.offsetX - treasureLocation.x;
+    const diffdistanceY = event.offsetY - treasureLocation.y;
+    return Math.sqrt(
+      diffdistanceX * diffdistanceX + diffdistanceY * diffdistanceY
+    );
+  };
+  // get hint
 };
-
-// function clickCounter() {
-//   click--;
-//   getDistance();
-//   console.log("Click is -1 :", click_limit);
-//   getRandomNumber();
-//   endGame();
-// }
-
-// logic of the game
-
-// when i click on the map, then...
-//

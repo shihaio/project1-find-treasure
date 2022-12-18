@@ -2,10 +2,12 @@ const mapWidthX = 600;
 const mapWidthY = 400;
 const clickLimit = 20;
 let clicks;
+let displayText;
 let treasureLocation;
 const map = $("#map");
 const distanceNotification = $("#distance");
 const clickNotification = $("#click");
+// const guidelines = $("#guide-lines");
 const replayButton = $("#replay-btn");
 
 // 1a. get random axis to locate treasure
@@ -20,8 +22,9 @@ const restartGame = function () {
     x: pickRandomNum(mapWidthX),
     y: pickRandomNum(mapWidthY),
   };
-  distanceNotification.text("Welcome, click the map!");
+  distanceNotification.text("Start the game, click the map!");
   clickNotification.text("");
+  // guidelines.css("display", "none");
 };
 
 const getDistance = function (event, treasureLocation) {
@@ -29,12 +32,14 @@ const getDistance = function (event, treasureLocation) {
   const diffdistanceY = event.offsetY - treasureLocation.y;
   return Math.sqrt(
     diffdistanceX * diffdistanceX + diffdistanceY * diffdistanceY
-  );
+  ).toFixed(2);
 };
 
 const getDistanceHint = function (distance) {
+  // guidelines.html(`
+  // `);
   if (distance < 10) {
-    return "Boiling hot!, your distance is:" + distance;
+    return "Boiling hot, your distance is:" + distance;
   } else if (distance < 20) {
     return "Really hot, your distance is:" + distance;
   } else if (distance < 40) {
@@ -65,6 +70,7 @@ const endGame = function (distance, clicks) {
 const startGame = function (event) {
   // event is triggered! trigger a click event.
   // 3. start clicking
+  // guidelines.css("display", "block");
   --clicks;
   console.log("click count: ", clicks);
   // getDistance(event, treasureLocation);

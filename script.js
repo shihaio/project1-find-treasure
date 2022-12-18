@@ -2,6 +2,8 @@ const mapWidthX = 400;
 const mapWidthY = 400;
 let clicks = 15;
 map = $("#map");
+distanceNotification = $("#distance");
+clickNotification = $("#click");
 
 // declare function of getDistance
 
@@ -25,7 +27,7 @@ const getDistance = function (event, treasureLocation) {
     diffdistanceX * diffdistanceX + diffdistanceY * diffdistanceY
   );
 };
-const notifyDistance = function (distance) {
+const getDistanceHint = function (distance) {
   if (distance < 10) {
     return "Boiling hot!";
   } else if (distance < 20) {
@@ -43,10 +45,21 @@ const notifyDistance = function (distance) {
   }
 };
 
+const endGame = function (distance, clicks) {
+  if (distance < 8) {
+    alert(
+      "Congrats! You found the buried treasure." + "   Click left:  " + clicks
+    );
+  } else if (clicks === 0) {
+    alert("Treasure is still buried. Please try again.");
+  }
+  
+};
 $(document).ready(function () {
   // 2. load click counter (decreasing)
   map.on("click", startGame);
   console.log("hehehe");
+  // map.off("click", startGame);
   // 3. click map
   // 4. calcultae distance between location A and treasure
   // 5. get Hint
@@ -68,8 +81,11 @@ const startGame = function (event) {
   // getDistance(event, treasureLocation);
   const distance = getDistance(event, treasureLocation);
   console.log(distance);
-  const hint = notifyDistance(distance);
-  console.log(hint);
-  // get distance between mouse location and treassure location
-  // get hint
+  const distanceAlert = getDistanceHint(distance);
+  console.log(distanceAlert);
+  distanceNotification.text("Distance Notfication: " + distanceAlert);
+  clickNotification.text("Clicks left: " + clicks);
+  endGame(distance, clicks);
 };
+// get distance between mouse location and treassure location
+// get hint

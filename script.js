@@ -1,11 +1,12 @@
 const mapWidthX = 600;
 const mapWidthY = 400;
-const clickLimit = 10;
+const clickLimit = 20;
 let clicks;
 let treasureLocation;
-map = $("#map");
-distanceNotification = $("#distance");
-clickNotification = $("#click");
+const map = $("#map");
+const distanceNotification = $("#distance");
+const clickNotification = $("#click");
+const replayButton = $("#replay-btn");
 
 // 1a. get random axis to locate treasure
 const pickRandomNum = function (inputSize) {
@@ -19,6 +20,8 @@ const restartGame = function () {
     x: pickRandomNum(mapWidthX),
     y: pickRandomNum(mapWidthY),
   };
+  distanceNotification.text("Welcome, click the map!");
+  clickNotification.text("");
 };
 
 const getDistance = function (event, treasureLocation) {
@@ -82,6 +85,7 @@ $(document).ready(function () {
     y: pickRandomNum(mapWidthY),
   };
   map.on("click", startGame);
+  replayButton.on("click", restartGame);
 });
 
 // 3. click map

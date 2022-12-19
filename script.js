@@ -39,26 +39,50 @@ const getDistanceHint = function (distance) {
   // guidelines.html(`
   // `);
   if (distance < 10) {
-    return "Boiling hot, your distance is:" + distance;
+    return (
+      "Almost find the treasure! \nYou are " +
+      distance +
+      " away from the treasure."
+    );
   } else if (distance < 20) {
-    return "Really hot, your distance is:" + distance;
+    return (
+      "About to find the treasure! \nYou are " +
+      distance +
+      " away from the treasure."
+    );
   } else if (distance < 40) {
-    return "Hot, your distance is:" + distance;
+    return (
+      "Around the treasure area! \nYou are  " +
+      distance +
+      " away from the treasure."
+    );
   } else if (distance < 80) {
-    return "Warm, your distance is:" + distance;
+    return (
+      "Not far away from the treasure! \nYou are " +
+      distance +
+      " away from the treasure."
+    );
   } else if (distance < 160) {
-    return "Cold, your distance is:" + distance;
+    return (
+      "Far away from the treasure! \nYou are " +
+      distance +
+      " away from the treasure."
+    );
   } else if (distance < 320) {
-    return "Really cold, your distance is:" + distance;
+    return (
+      "Very far away from the treasure! \nYou are " +
+      distance +
+      " away from the treasure."
+    );
   } else {
-    return "Freezing, your distance is:" + distance;
+    return "Out of the way! \nYou are " + distance + " away from the treasure.";
   }
 };
 
 const endGame = function (distance, clicks) {
   if (distance < 8) {
     alert(
-      "Congrats! You found the buried treasure." + "   Click left:  " + clicks
+      "Congrats! You found the buried treasure." + " Click left:  " + clicks
     );
     restartGame();
   } else if (clicks === 0) {

@@ -2,7 +2,6 @@ const mapWidthX = 600;
 const mapWidthY = 400;
 const clickLimit = 20;
 let clicks;
-// let displayText;
 let treasureLocation;
 const map = $("#map");
 const distanceNotification = $("#distance");
@@ -75,6 +74,8 @@ const getDistanceHint = function (distance) {
 };
 
 const endGame = function (distance, clicks) {
+  console.log("distance", distance, typeof distance);
+  console.log("clicks", clicks, typeof clicks);
   if (distance < 8) {
     alert(
       "Congrats! You found the buried treasure." + " Click left:  " + clicks
@@ -86,14 +87,10 @@ const endGame = function (distance, clicks) {
   }
 };
 
-const startGame = function (event) {
+const findTreasure = function (event) {
   console.log(event);
-  // event is triggered! trigger a click event.
-  // 3. start clicking
-  // guidelines.css("display", "block");
   --clicks;
   console.log("click count: ", clicks);
-  // getDistance(event, treasureLocation);
   const distance = getDistance(event, treasureLocation);
   console.log(distance);
   const distanceAlert = getDistanceHint(distance);
@@ -118,18 +115,9 @@ $(document).ready(function () {
     x: pickRandomNum(mapWidthX),
     y: pickRandomNum(mapWidthY),
   };
-  map.on("click", startGame);
+  map.on("click", findTreasure);
   replayButton.on("click", restartGame);
 });
-
-// 3. click map
-// 4. calcultae distance between location A and treasure
-// 5. get Hint
-// 6. condition to win / lose game
-// 7. alert fn (declare win/lose)
-// 8. restart game
-// 'click' is an event handler
-// we activate the click handler.
 
 // retrieve information from event object to output the x&y coordinates of my click location
 // hold information about the click event, such as location of the click.

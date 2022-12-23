@@ -26,5 +26,3 @@ on finding the treasure and says how many clicks left remaining.
 BOOK TITLE: JAVASCRIPT FOR KIDS
 AUTHOR: NICK MORGAN
 PUBLISHED YEAR: 2015
-
-Gameplay Snap Shot of Treasure Hunt

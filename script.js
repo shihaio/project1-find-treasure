@@ -74,8 +74,8 @@ const getDistanceHint = function (distance) {
 };
 
 const endGame = function (distance, clicks) {
-  console.log("distance", distance, typeof distance);
-  console.log("clicks", clicks, typeof clicks);
+  // console.log("distance", distance, typeof distance);
+  // console.log("clicks", clicks, typeof clicks);
   if (distance < 8) {
     alert(
       "Congrats! You found the buried treasure." + " Click left:  " + clicks
@@ -88,21 +88,9 @@ const endGame = function (distance, clicks) {
 };
 
 const findTreasure = function (event) {
-  console.log(event);
   --clicks;
-  console.log("click count: ", clicks);
   const distance = getDistance(event, treasureLocation);
-  console.log(distance);
   const distanceAlert = getDistanceHint(distance);
-  console.log(distanceAlert);
-  console.log(
-    "This is the mouse location of click X coordinate: ",
-    event.offsetX
-  );
-  console.log(
-    "This is the mouse location of click Y coordinate: ",
-    event.offsetY
-  );
   distanceNotification.text("Distance Notfication: " + distanceAlert);
   clickNotification.text("Clicks left: " + clicks);
   endGame(distance, clicks);

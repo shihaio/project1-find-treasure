@@ -107,7 +107,7 @@ const findTreasure = function (event) {
   clickNotification.text("Clicks left: " + clicks);
   endGame(distance, clicks);
 };
-// NOTE: 1
+
 $(document).ready(function () {
   clicks = clickLimit;
 
@@ -118,6 +118,3 @@ $(document).ready(function () {
   map.on("click", findTreasure);
   replayButton.on("click", restartGame);
 });
-
-// retrieve information from event object to output the x&y coordinates of my click location
-// hold information about the click event, such as location of the click.

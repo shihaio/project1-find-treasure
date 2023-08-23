@@ -1,6 +1,6 @@
 # Project Title Treasure Hunt
 
-The aim of this game is to find the hidden treasure.
+The aim of this game is to find the hidden treasure within the number of clicks.
 
 ## Game Description
 
